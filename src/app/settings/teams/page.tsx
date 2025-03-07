@@ -66,15 +66,7 @@ export default function TeamsPage() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6">Team Settings</h2>
-
-      {/* Debug info */}
-      <div className="mb-4 p-2 bg-gray-100 rounded text-sm">
-        <p>SAAS Enabled: {isSaasEnabled ? "Yes" : "No"}</p>
-        <p>Teams Feature Enabled: {isFeatureEnabled("teams") ? "Yes" : "No"}</p>
-        <p>ENV Variable: {process.env.NEXT_PUBLIC_ENABLE_SAAS_FEATURES}</p>
-      </div>
-
+      <h2 className="text-3xl font-bold mb-6">Team Settings PLACEHOLDER</h2>
       {/* TeamManagement will either show the SAAS component or the fallback */}
       <TeamManagement />
 

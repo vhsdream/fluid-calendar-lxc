@@ -21,14 +21,40 @@ export function loadSaasComponent<T extends object>(
   }
 
   try {
+    // In the open source version, the saas directory might not exist
+    // We'll handle this by returning the fallback component
     // Dynamically import the SAAS component
     // Use a function that returns a promise to make it compatible with React.lazy
     const Component = lazy(() => {
-      return import(`@/saas/${path}`).then((module) => {
-        // Handle both default and named exports
-        return {
-          default: module.default || module[path.split("/").pop() || ""],
-        };
+      // Use a try-catch to handle the case when the module doesn't exist
+      return new Promise<{ default: ComponentType<T> }>((resolve) => {
+        try {
+          // Use dynamic import with a string literal to prevent webpack from trying to resolve
+          // the path at build time
+          const importPath = `../saas/${path}`;
+          import(/* @vite-ignore */ importPath)
+            .then((module) => {
+              // Handle both default and named exports
+              resolve({
+                default: (module.default ||
+                  module[path.split("/").pop() || ""] ||
+                  (() => null)) as ComponentType<T>,
+              });
+            })
+            .catch((_error) => {
+              // If import fails, resolve with fallback
+              console.error(`Error loading SAAS component ${path}:`, _error);
+              resolve({
+                default: (fallback || (() => null)) as ComponentType<T>,
+              });
+            });
+        } catch (_error) {
+          // If any error occurs, resolve with fallback
+          console.error(`Error loading SAAS component ${path}:`, _error);
+          resolve({
+            default: (fallback || (() => null)) as ComponentType<T>,
+          });
+        }
       });
     });
 

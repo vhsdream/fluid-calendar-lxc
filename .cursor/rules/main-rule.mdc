@@ -42,3 +42,6 @@ When implementing new features, consider whether they should be:
 1. Core features available in both versions
 2. Premium features exclusive to the SAAS version
 3. Core features with premium enhancements in the SAAS version 
+
+
+if you are not sure if this is a saas or opensource feature, then ask to confirm

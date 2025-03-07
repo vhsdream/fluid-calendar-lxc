@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { checkSetupStatus } from "@/lib/setup-actions";
 
 export function SetupCheck() {
   const router = useRouter();
@@ -23,8 +24,7 @@ export function SetupCheck() {
 
     const checkSetup = async () => {
       try {
-        const response = await fetch("/api/setup/check");
-        const data = await response.json();
+        const data = await checkSetupStatus();
 
         if (data.needsSetup) {
           router.push("/setup");

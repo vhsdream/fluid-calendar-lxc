@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { logger } from "@/lib/logger";
-
-const LOG_SOURCE = "SetupCheckAPI";
+import { checkSetupStatus } from "@/lib/setup-actions";
 
 /**
  * GET /api/setup/check
@@ -11,25 +8,12 @@ const LOG_SOURCE = "SetupCheckAPI";
  */
 export async function GET() {
   try {
-    const userCount = await prisma.user.count();
+    const result = await checkSetupStatus();
 
-    logger.info("Checked if users exist", { userCount }, LOG_SOURCE);
-
-    return NextResponse.json({
-      needsSetup: userCount === 0,
-      userCount,
-    });
+    return NextResponse.json(result);
   } catch (error) {
-    logger.error(
-      "Failed to check if users exist",
-      {
-        error: error instanceof Error ? error.message : "Unknown error",
-      },
-      LOG_SOURCE
-    );
-
     return NextResponse.json(
-      { error: "Failed to check if users exist" },
+      { error: "Failed to check if users exist", details: error },
       { status: 500 }
     );
   }

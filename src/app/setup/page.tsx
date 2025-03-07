@@ -1,40 +1,17 @@
 import { SetupForm } from "@/components/setup/SetupForm";
 import { redirect } from "next/navigation";
+import { checkSetupStatus } from "@/lib/setup-actions";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Setup FluidCalendar",
   description: "Set up your FluidCalendar admin account",
 };
 
-async function checkIfSetupNeeded() {
-  try {
-    // Use server-side fetch to check if setup is needed
-    const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-      }/api/setup/check`,
-      {
-        cache: "no-store", // Don't cache this request
-      }
-    );
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.needsSetup;
-    }
-
-    // If the check fails, we'll assume setup is needed
-    return true;
-  } catch (error) {
-    console.error("Failed to check if setup is needed:", error);
-    // If the check fails, we'll assume setup is needed
-    return true;
-  }
-}
-
 export default async function SetupPage() {
   // Check if any users already exist
-  const needsSetup = await checkIfSetupNeeded();
+  const { needsSetup } = await checkSetupStatus();
 
   // If users already exist, redirect to home page
   if (!needsSetup) {

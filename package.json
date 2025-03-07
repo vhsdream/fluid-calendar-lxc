@@ -15,7 +15,8 @@
     "prisma:studio": "prisma studio",
     "setup": "npm install && npm run prisma:generate && npm run prisma:migrate",
     "clean": "rm -rf .next node_modules",
-    "db:up": "docker compose up db -d"
+    "db:up": "docker compose up db -d",
+    "sync": "scripts/sync-repos.sh /Users/emad/src/fluid-calendar-saas /Users/emad/src/fluid-calendar"
   },
   "dependencies": {
     "@auth/core": "^0.34.2",

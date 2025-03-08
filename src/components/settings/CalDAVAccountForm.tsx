@@ -8,6 +8,8 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { logger } from "@/lib/logger";
 
 const LOG_SOURCE = "CalDAVAccountForm";
@@ -295,14 +297,13 @@ export function CalDAVAccountForm({
           )}
 
           <fieldset className="mb-4">
-            <label
-              className="block text-[15px] leading-normal mb-2.5"
+            <Label
+              className="text-[15px] leading-normal mb-2.5"
               htmlFor="serverUrl"
             >
               Server URL <span className="text-red-500">*</span>
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-black dark:text-white shadow-[0_0_0_1px] shadow-gray-400 dark:shadow-gray-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-blue-500 dark:focus:shadow-blue-400 bg-white dark:bg-gray-800"
+            </Label>
+            <Input
               id="serverUrl"
               name="serverUrl"
               placeholder="https://caldav.example.com"
@@ -316,14 +317,13 @@ export function CalDAVAccountForm({
           </fieldset>
 
           <fieldset className="mb-4">
-            <label
-              className="block text-[15px] leading-normal mb-2.5"
+            <Label
+              className="text-[15px] leading-normal mb-2.5"
               htmlFor="username"
             >
               Username <span className="text-red-500">*</span>
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-black dark:text-white shadow-[0_0_0_1px] shadow-gray-400 dark:shadow-gray-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-blue-500 dark:focus:shadow-blue-400 bg-white dark:bg-gray-800"
+            </Label>
+            <Input
               id="username"
               name="username"
               placeholder="your.email@example.com"
@@ -337,14 +337,13 @@ export function CalDAVAccountForm({
           </fieldset>
 
           <fieldset className="mb-4">
-            <label
-              className="block text-[15px] leading-normal mb-2.5"
+            <Label
+              className="text-[15px] leading-normal mb-2.5"
               htmlFor="password"
             >
               Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-black dark:text-white shadow-[0_0_0_1px] shadow-gray-400 dark:shadow-gray-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-blue-500 dark:focus:shadow-blue-400 bg-white dark:bg-gray-800"
+            </Label>
+            <Input
               id="password"
               name="password"
               type="password"
@@ -360,14 +359,10 @@ export function CalDAVAccountForm({
           </fieldset>
 
           <fieldset className="mb-4">
-            <label
-              className="block text-[15px] leading-normal mb-2.5"
-              htmlFor="path"
-            >
+            <Label className="text-[15px] leading-normal mb-2.5" htmlFor="path">
               Path (Optional)
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none text-black dark:text-white shadow-[0_0_0_1px] shadow-gray-400 dark:shadow-gray-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-blue-500 dark:focus:shadow-blue-400 bg-white dark:bg-gray-800"
+            </Label>
+            <Input
               id="path"
               name="path"
               placeholder="/dav/calendars/user/username@fastmail.com"

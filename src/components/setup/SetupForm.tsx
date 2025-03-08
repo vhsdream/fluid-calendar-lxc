@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { HiCheckCircle, HiExclamationCircle } from "react-icons/hi";
+import { useSetupStore } from "@/store/setup";
 
 export function SetupForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const { setSetupStatus } = useSetupStore();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -71,6 +73,9 @@ export function SetupForm() {
       }
 
       setSuccess(true);
+
+      // Update the setup store to indicate setup is complete
+      setSetupStatus(false);
 
       // Redirect to home page after a short delay
       setTimeout(() => {

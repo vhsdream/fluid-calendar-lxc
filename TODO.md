@@ -1,7 +1,9 @@
 # FluidCalendar Implementation Plan
-
+# Random Tasks
+- [ ] add a calculator comparing motion to FC
+- [ ] move homepage to this repo.
+- [ ] 
 # CalDAV Implementation
-
 ## Phase 1: Setup and Basic Structure ✅
 - [x] Add required libraries (`tsdav`, `ical.js`)
 - [x] Update database schema with CalDAV-specific fields
@@ -207,3 +209,14 @@
   - [ ] Implement proper cleanup on unmount
   - [ ] Add visual indicators for sync status
   - [ ] Add sync error notifications
+
+## Landing Page Implementation
+
+- [x] Create landing page component in SAAS directory
+- [x] Create landing page route in SAAS directory
+- [x] Add feature flag for landing page
+- [x] Modify middleware to redirect non-logged-in users to landing page
+- [x] Create layout file for landing page
+- [x] Create helper functions for landing page
+- [x] Add tests for landing page
+- [x] Update documentation

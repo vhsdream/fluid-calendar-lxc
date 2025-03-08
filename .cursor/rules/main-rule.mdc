@@ -26,6 +26,11 @@ This project is available in two versions:
 - The open source repository is at https://github.com/fluidcalendar/fluidcalendar
 - The private SAAS repository contains both the open source code and the SAAS-specific code
 
+### File Extension Convention:
+- Files with `.saas.tsx`/`.saas.ts` extension are only included in the SAAS build
+- Files with `.open.tsx`/`.open.ts` extension are only included in the open source build
+- Regular files (without special extensions) are included in both builds
+
 ### Feature Flags:
 - Use the `isSaasEnabled` and `isFeatureEnabled()` functions from `src/lib/config.ts` to conditionally enable SAAS features
 - SAAS features are controlled by the `NEXT_PUBLIC_ENABLE_SAAS_FEATURES` environment variable
@@ -43,5 +48,8 @@ When implementing new features, consider whether they should be:
 2. Premium features exclusive to the SAAS version
 3. Core features with premium enhancements in the SAAS version 
 
+
+
+### Feature Flags: 
 
 if you are not sure if this is a saas or opensource feature, then ask to confirm

@@ -26,6 +26,7 @@ export const featureFlags = {
     advancedAnalytics: isSaasEnabled,
     aiScheduling: isSaasEnabled,
     prioritySupport: isSaasEnabled,
+    landingPage: isSaasEnabled,
   },
 };
 
